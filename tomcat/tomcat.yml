@@ -1,0 +1,28 @@
+---
+- hosts: all
+  become: yes
+  tasks: 
+  - name: add java oracle repository 
+    apt_repository:
+       repo: 'ppa:webupd8team/java'
+       state: present 
+
+  - name: install java oracle
+    apt:
+      name: oracle-java8-set-default
+      state: present 
+
+  - name: tomcat system-wide installation
+    apt:
+      name: tomcat8
+      state: latest
+
+  - name: using tomcat admin webapp
+    apt:
+      name: tomcat8-admin
+      state: latest
+
+  - name: using tomcat private instances
+    apt:
+      name: tomcat8-user
+      state: latest
